@@ -60,7 +60,7 @@ export default function Portfolio() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
-          <img src="public/logo.svg" alt="Grafene" />
+          <img src="/logo.svg" alt="Grafene" />
         </div>
         <div className="menu-icon">
           <div className="line"></div>
