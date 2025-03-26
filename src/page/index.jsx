@@ -4,7 +4,7 @@ import ProjectCard from "../assets/components/ProjectCard";
 
 const projects = [
   {
-    image: "../../public/projects/c5cd86843eaedd2a1ec8511e8c304b30.gif",
+    image: "/projects/c5cd86843eaedd2a1ec8511e8c304b30.gif",
     title: "GRAVITAS",
     description:
       "An Event Management Software for Open-Source Collaboration...",
@@ -16,7 +16,7 @@ const projects = [
     moreInfoLink: "https://example.com/gravitas",
   },
   {
-    image: "../../public/projects/6a327caa4b5c102de396a1c3aaa20e98.gif",
+    image: "/projects/6a327caa4b5c102de396a1c3aaa20e98.gif",
     title: "PageByPage",
     description:
       "A platform bringing together students with diverse tech skills...",
