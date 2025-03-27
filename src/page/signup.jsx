@@ -5,6 +5,7 @@ import { UniversalNavbar } from "../assets/components/universal-navbar";
 
 export default function SignUp() {
   return (
+    
     <div className="auth-container" id="SignUp">
       <div className="background">
         <div className="blur-circle circle-1"></div>
