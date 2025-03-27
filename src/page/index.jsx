@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import ProjectCard from "../assets/components/ProjectCard";
+import { Navbar } from "../assets/components/Navbar";
 
 const projects = [
   {
@@ -59,14 +60,15 @@ export default function Portfolio() {
   return (
     <div className="main-container">
       {/* Navbar */}
-      <nav className="navbar">
+    <Navbar />
+      {/* <nav className="navbar">
         <div className="logo">
           <img src="/logo.svg" alt="Grafene" />
         </div>
         <div className="menu-icon">
           <div className="line"></div>
         </div>
-      </nav>
+      </nav> */}
       <div className="background">
         <div className="blur-circle circle-1"></div>
         <div className="blur-circle circle-2"></div>
@@ -118,7 +120,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section className="contacts" id="cont">
+      <section className="contacts" id="contact">
         <h2>CONTACTS</h2>
         <p className="section-subtitle">Strong Bonds Drive Me Further</p>
 
