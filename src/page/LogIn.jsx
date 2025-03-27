@@ -1,5 +1,5 @@
 import './signup.css';
-import TextInput from '../assets/components/textInput';
+import TextInput from '../assets/components/TextInput.jsx';
 import './index.css'
 import { UniversalNavbar } from '../assets/components/universal-navbar';
 

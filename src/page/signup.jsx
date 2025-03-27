@@ -1,11 +1,11 @@
 import "./signup.css";
-import TextInput from "../assets/components/textInput";
+import TextInput from "../assets/components/TextInput.jsx";
 import "./index.css";
 import { UniversalNavbar } from "../assets/components/universal-navbar";
 
 export default function SignUp() {
   return (
-    
+
     <div className="auth-container" id="SignUp">
       <div className="background">
         <div className="blur-circle circle-1"></div>
