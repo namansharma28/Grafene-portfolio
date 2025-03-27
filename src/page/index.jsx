@@ -61,14 +61,6 @@ export default function Portfolio() {
     <div className="main-container">
       {/* Navbar */}
     <Navbar />
-      {/* <nav className="navbar">
-        <div className="logo">
-          <img src="/logo.svg" alt="Grafene" />
-        </div>
-        <div className="menu-icon">
-          <div className="line"></div>
-        </div>
-      </nav> */}
       <div className="background">
         <div className="blur-circle circle-1"></div>
         <div className="blur-circle circle-2"></div>
@@ -88,6 +80,7 @@ export default function Portfolio() {
             <span className="bracket">{`>`}</span>
           </h1>
           <h2>
+            
             <p className="subtitle">
               Build together, like Carbon atoms in Graphene
             </p>
