@@ -473,7 +473,7 @@ button {
 .buttons {
   margin-left: 0;
   display: flex;
-  width: 40%;
+  width: 70%;
   gap: 1.6rem;
 }
 /* Different animation delays for each circle */
@@ -614,6 +614,9 @@ footer .logo img {
       width: 100vw;
       margin-top: 5rem;
     }
+    .buttons {
+      width: 70%
+    }
   }
       @media (max-width: 570px) {
         .main-title {
@@ -656,7 +659,7 @@ footer .logo img {
           font-size: 1rem;
         }
         .buttons {
-          width: 70%;
+          width: 80%;
           margin-bottom: 2rem;
         }
         .cont-image {

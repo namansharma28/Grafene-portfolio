@@ -139,6 +139,9 @@
     .navbar-links.show {
       display: flex;
     }
+    .navbar {
+        height: 4rem;
+    }
 }
 .navbar-links a {
     position: relative;
