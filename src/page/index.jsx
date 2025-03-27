@@ -27,6 +27,7 @@ const projects = [
     repoLink: "https://github.com/example/pagebypage",
     moreInfoLink: "https://example.com/pagebypage",
   },
+  
 ];
 
 export default function Portfolio() {
@@ -66,15 +67,16 @@ export default function Portfolio() {
           <div className="line"></div>
         </div>
       </nav>
-
-      {/* Hero Section */}
-      <section className="hero">
+      <div className="background">
         <div className="blur-circle circle-1"></div>
         <div className="blur-circle circle-2"></div>
         <div className="blur-circle circle-3"></div>
         <div className="blur-circle circle-4"></div>
         <div className="blur-circle circle-5"></div>
         <div className="blur-circle circle-6"></div>
+      </div>
+      {/* Hero Section */}
+      <section className="hero">
 
         <div className="hero-content">
           <h1 className="main-title">
@@ -95,7 +97,7 @@ export default function Portfolio() {
           </p>
           <button className="cta-button">
             <span>Projects </span>
-            <span> > </span>{" "}
+            <span> {`>`} </span>{" "}
           </button>
         </div>
       </section>
