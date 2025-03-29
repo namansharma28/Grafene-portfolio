@@ -1,11 +1,30 @@
 import "./signup.css";
-import TextInput from "../assets/components/TextInput.jsx";
 import "./index.css";
 import { UniversalNavbar } from "../assets/components/universal-navbar";
+import styled from "styled-components";
+import { useState } from "react";
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+
 
 export default function SignUp() {
-  return (
 
+
+  const [name,setName] = useState()
+  const [mobile,setMobile] = useState()
+  const [password,setPassword] = useState()
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('http://localhost:3001/signup', {name, mobile, password})
+    .then(result => {console.log(result)
+      navigate('/LogIn')
+    })
+    .catch(err=> console.log(err))
+  }
+
+  return (
     <div className="auth-container" id="SignUp">
       <div className="background">
         <div className="blur-circle circle-1"></div>
@@ -16,19 +35,63 @@ export default function SignUp() {
         <div className="blur-circle circle-6"></div>
       </div>
       <UniversalNavbar />
-        <h2 className="auth-title">SignUp</h2>
-      
-        <form className="auth">
+      <h2 className="auth-title">SignUp</h2>
+
+      <form className="auth" onSubmit={handleSubmit}>
         <p className="authsubtitle">Name</p>
-        <TextInput/>
+        <StyledWrapper>
+          <div className="input-element">
+            <input type="text" className="text-input" onChange={(e)=>setName(e.target.value)} required/>
+          </div>
+        </StyledWrapper>
         <p className="authsubtitle">Mobile</p>
-        <TextInput/>
+        <StyledWrapper>
+          <div className="input-element">
+            <input type="number" className="text-input" onChange={(e)=>setMobile(e.target.value)} required></input>
+          </div>
+        </StyledWrapper>
         <p className="authsubtitle">Password</p>
-        <TextInput/>
+        <StyledWrapper>
+          <div className="input-element">
+            <input type="password" className="text-input" onChange={(e)=>setPassword(e.target.value)} required></input>
+          </div>
+        </StyledWrapper>
         <p className="authsubtitle">Confirm Password</p>
-        <TextInput/>
-        <button type="submit" className="submit-btn">SignUp</button>
-        </form>
+        <StyledWrapper>
+          <div className="input-element">
+            <input type="password" className="text-input" required></input>
+          </div>
+        </StyledWrapper>
+        <button type="submit" className="submit-btn">
+          SignUp
+        </button>
+      </form>
     </div>
   );
 }
+
+const StyledWrapper = styled.div`
+  .text-input {
+    background: transparent;
+    border: solid 3px white;
+    color: white;
+    height: 3rem;
+    width: 30rem;
+    font-size: 1.5rem;
+    border-radius: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .input-element {
+    display: flex;
+    flex-direction: column;
+    margin: 0 3rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) {
+    .text-input {
+      height: 3rem;
+      width: 20rem;
+    }
+  }
+`;
