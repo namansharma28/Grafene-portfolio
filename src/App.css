@@ -40,3 +40,50 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 75, 51, 0.5);
+  transition: transform 0.15s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+}
+
+.cursor-enlarged {
+  transform: scale(1.5);
+}
+
+.cursor-dot.cursor-enlarged {
+  background-color: rgba(255, 75, 51, 0.8);
+}
+
+.cursor-outline.cursor-enlarged {
+  border-color: rgba(255, 75, 51, 0.3);
+  width: 50px;
+  height: 50px;
+}
+
+* {
+  cursor: none;
+}

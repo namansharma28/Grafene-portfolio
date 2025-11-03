@@ -1,6 +1,6 @@
 // ProjectCard.tsx
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
   image: string;
@@ -9,6 +9,7 @@ interface ProjectCardProps {
   contributors: string[]; // Array of contributor image URLs
   repoLink: string;
   moreInfoLink: string;
+  id?: string; // Project ID for routing
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -17,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   contributors,
   repoLink,
-  moreInfoLink,
+  id,
 }) => {
   return (
     <div className=" project-card">
@@ -42,16 +43,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             rel="noopener noreferrer"
             className="btn"
           >
-            Repository
+            Link to Project
           </a>
-          <a
-            href={moreInfoLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={`/project/${id || title.toLowerCase().replace(/\s+/g, '-')}`}
             className="btn"
           >
             Know More
-          </a>
+          </Link>
         </div>
       </div>
     </div>

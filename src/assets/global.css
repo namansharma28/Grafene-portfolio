@@ -1,0 +1,65 @@
+/* Custom Scrollbar Styling */
+:root {
+  --primary-color: #ff4b33;
+  --text-color: #ffffff;
+  --bg-color: #000000;
+}
+
+/* Global Background for all pages */
+body {
+  /* background: linear-gradient(135deg, #000000, #121212); */
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Common page container styling */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem;
+  z-index: 1;
+}
+
+/* Consistent background elements */
+
+/* Webkit browsers (Chrome, Safari, newer versions of Opera, etc) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b53;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--primary-color) rgb(255, 255, 255);
+}
+
+/* Cursor Trail Animation */
+.cursor-trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  transition: transform 0.1s ease;
+}
