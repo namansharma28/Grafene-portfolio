@@ -25,7 +25,13 @@ export const Navbar: React.FC = () => {
 
           <div className={`navbar-links ${isOpen ? 'show' : ''}`}>
             
-            <Link to="/" className="navbar-link">About</Link>
+            {/* <Link to="#hero" className="navbar-link">Home</Link> */}
+            <a href="#hero" className="navbar-link">
+              Home
+            </a>
+            <a href="#about" className="navbar-link">
+              About
+            </a>
             <a href="#projects" className="navbar-link">
               Projects
             </a>

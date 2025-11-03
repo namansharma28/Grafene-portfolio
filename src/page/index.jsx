@@ -129,7 +129,7 @@ export default function Portfolio() {
         <img src="/rings/ring4.png" alt="Ring" className="ring ring-5" />
       </div> */}
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" id="hero">
         <div className="hero-content">
           <h1 className="main-title slide-in-left">
             <span className="bracket">{`<`}</span>
@@ -155,7 +155,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section className="about-section fade-in">
+      <section className="about-section fade-in" id="about">
         <div className="about-container">
           <h2 className="about-title">About Grafene</h2>
           <div className="about-content">
@@ -367,7 +367,8 @@ export default function Portfolio() {
           <img src="/logo.svg" alt="Grafene" />
         </div>
         <div className="footer-links">
-          <a href="#">About</a>
+          <a href="#hero">Home</a>          
+          <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#cont">Contacts</a>
           <a href="#faq">FAQs</a>

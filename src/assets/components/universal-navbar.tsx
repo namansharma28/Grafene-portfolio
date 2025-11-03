@@ -37,7 +37,7 @@ export const UniversalNavbar: React.FC = () => {
           </button>
 
           <div className={`navbar-links ${isOpen ? "show" : ""}`}>
-            <Link to="/" className="navbar-link">About</Link>
+            <Link to="/" className="navbar-link">Home</Link>
 
             {isLoggedIn ? (
               <>
