@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import ProjectCard from "../assets/components/ProjectCard";
 import { Navbar } from "../assets/components/Navbar";
+import { Link } from "react-router-dom";
+
 
 const projects = [
   {
@@ -344,23 +346,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="faq" id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <p className="section-subtitle">Strong Bonds Drive Me Further</p>
-
-        <div className="faq-items">
-          {faqData.map((item, index) => (
-            <div className="faq-item" key={index}>
-              <h3 onClick={() => toggleFAQ(index)} className="faq-question">
-                {item.question}
-              </h3>
-              {activeIndex === index && <p className="faq-answer">{item.answer}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Footer */}
       <footer>
         <div className="logo">
@@ -371,7 +356,8 @@ export default function Portfolio() {
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#cont">Contacts</a>
-          <a href="#faq">FAQs</a>
+          <Link to="/faq">FAQs</Link>
+          
         </div>
       </footer>
     </div>

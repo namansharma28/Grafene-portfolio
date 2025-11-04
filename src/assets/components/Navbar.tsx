@@ -38,9 +38,7 @@ export const Navbar: React.FC = () => {
             <a href="#contact" className="navbar-link">
               Contact
             </a>
-            <a href="#faq" className="navbar-link">
-              FAQs
-            </a>
+            <Link to="/faq" className="navbar-link">FAQs</Link>
             <Link to="/signup" className="navbar-link">SignUp</Link>
             <Link to="/logIn" className="navbar-link">LogIn</Link>
 

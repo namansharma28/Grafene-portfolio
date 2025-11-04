@@ -1,6 +1,4 @@
-
 import React, { useState, useEffect } from 'react';
-import Page from './page';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './page/signup';
 import LogIn from './page/LogIn';
@@ -8,6 +6,8 @@ import UploadProject from './page/UploadProject';
 import ProjectDetail from './page/ProjectDetail';
 import CursorTrail from './assets/components/CursorTrail';
 import './assets/global.css';
+import Portfolio from "./page";
+import FAQPage from "./page/FAQPage";
 
 
 export default function App() {
@@ -87,11 +87,12 @@ export default function App() {
         {/* Cursor trail */}
         <CursorTrail />
         <Routes>
-          <Route path="/" element={<Page />} />
+          <Route path="/" element={<Portfolio />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/uploadproject" element={<UploadProject />}></Route>
           <Route path="/project/:projectId" element={<ProjectDetail />}></Route>
+          <Route path="/faq" element={<FAQPage />} />
         </Routes>
       </div>
     </Router>
