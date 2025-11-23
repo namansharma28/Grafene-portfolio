@@ -3,42 +3,31 @@ import "./index.css";
 import ProjectCard from "../assets/components/ProjectCard";
 import { Navbar } from "../assets/components/Navbar";
 import { Link } from "react-router-dom";
-
-
-const projects = [
-  {
-    id: "gravitas",
-    image: "/projects/c5cd86843eaedd2a1ec8511e8c304b30.gif",
-    title: "GRAVITAS",
-    description:
-      "An Event Management Software for Open-Source Collaboration...",
-    contributors: [
-      "/contributors/Naman Sharma.jpg",
-    ],
-    repoLink: "https://gravitas.page",
-    moreInfoLink: "https://example.com/gravitas",
-  },
-  // {
-  //   id: "pagebypage",
-  //   image: "/projects/6a327caa4b5c102de396a1c3aaa20e98.gif",
-  //   title: "PageByPage",
-  //   description:
-  //     "A platform bringing together students with diverse tech skills...",
-  //   contributors: [
-  //     "/contributors/Naman Sharma.jpg",
-  //     "/contributors/om photo.jpg",
-  //   ],
-  //   repoLink: "https://github.com/example/pagebypage",
-  //   moreInfoLink: "https://example.com/pagebypage",
-  // },
-  
-];
+import { projectsAPI } from '../services/api';
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = React.useState(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [cursorEnlarged, setCursorEnlarged] = useState(false);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
   
+  // Fetch projects from API
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await projectsAPI.getAll();
+        setProjects(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   useEffect(() => {
     const moveCursor = (e) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -192,11 +181,20 @@ export default function Portfolio() {
         <div className="project-cards">
           <div className="projectAl">
           <div className="flex flex-col items-center gap-6">
-            {projects.map((project, index) => (
-              <div key={index} className={index % 2 === 0 ? "slide-in-left" : "slide-in-right"}>
-                <ProjectCard {...project} />
-              </div>
-            ))}
+            {loading ? (
+              <p style={{ color: 'white', textAlign: 'center' }}>Loading projects...</p>
+            ) : projects.length === 0 ? (
+              <p style={{ color: 'white', textAlign: 'center' }}>No projects available yet.</p>
+            ) : (
+              projects.map((project, index) => (
+                <div key={project.id} className={index % 2 === 0 ? "slide-in-left" : "slide-in-right"}>
+                  <ProjectCard 
+                    {...project} 
+                    contributors={project.contributors.map(c => c.image)}
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div></div>
       </section>

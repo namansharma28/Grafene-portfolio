@@ -1,64 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Navbar } from "../assets/components/Navbar";
+import { projectsAPI } from '../services/api';
 import "./ProjectDetail.css";
-
-// This would be replaced with actual data from backend later
-const projectsData = [
-  {
-    id: "gravitas",
-    image: "/projects/c5cd86843eaedd2a1ec8511e8c304b30.gif",
-    title: "GRAVITAS",
-    description: "An Event Management Software for Open-Source Collaboration...",
-    fullDescription: "Gravitas is a comprehensive event management platform designed specifically for open-source communities. It streamlines the process of organizing hackathons, workshops, and collaborative coding sessions. With features like participant tracking, project submission, and real-time collaboration tools, Gravitas makes it easy to host successful tech events.",
-    features: [
-      "Real-time collaboration tools",
-      "Project submission and evaluation system",
-      "Participant tracking and management",
-      "Event scheduling and notification system",
-      "Integration with GitHub and other version control systems"
-    ],
-    technologies: ["React", "Node.js", "MongoDB", "Socket.io", "GitHub API"],
-    contributors: [
-      {
-        name: "Naman Sharma",
-        image: "/contributors/Naman Sharma.jpg",
-        role: "Lead Developer"
-      }
-    ],
-    repoLink: "https://github.com/example/gravitas",
-    demoLink: "https://example.com/gravitas"
-  },
-  {
-    id: "pagebypage",
-    image: "/projects/6a327caa4b5c102de396a1c3aaa20e98.gif",
-    title: "PageByPage",
-    description: "A platform bringing together students with diverse tech skills...",
-    fullDescription: "PageByPage is an innovative platform that connects students from various technical backgrounds to collaborate on meaningful projects. It serves as a bridge between different disciplines, allowing students to form teams based on complementary skills and interests. The platform facilitates project discovery, team formation, and provides tools for effective collaboration.",
-    features: [
-      "Skill-based matching algorithm",
-      "Project discovery and recommendation",
-      "Team formation and management",
-      "Integrated communication tools",
-      "Progress tracking and milestone management"
-    ],
-    technologies: ["Vue.js", "Express", "PostgreSQL", "WebRTC", "AWS"],
-    contributors: [
-      {
-        name: "Naman Sharma",
-        image: "/contributors/Naman Sharma.jpg",
-        role: "Frontend Developer"
-      },
-      {
-        name: "Om",
-        image: "/contributors/om photo.jpg",
-        role: "Backend Developer"
-      }
-    ],
-    repoLink: "https://github.com/example/pagebypage",
-    demoLink: "https://example.com/pagebypage"
-  }
-];
 
 export default function ProjectDetail() {
   const { projectId } = useParams();
@@ -66,14 +10,19 @@ export default function ProjectDetail() {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    // This would be replaced with an API call in the future
-    const foundProject = projectsData.find(p => p.id === projectId);
-    
-    // Simulate API call delay
-    setTimeout(() => {
-      setProject(foundProject || null);
-      setLoading(false);
-    }, 500);
+    const fetchProject = async () => {
+      try {
+        const response = await projectsAPI.getById(projectId);
+        setProject(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching project:', error);
+        setProject(null);
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
   }, [projectId]);
   
   if (loading) {

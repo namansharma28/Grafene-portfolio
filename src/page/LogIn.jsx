@@ -3,33 +3,42 @@ import "./index.css";
 import { UniversalNavbar } from "../assets/components/universal-navbar";
 import styled from "styled-components";
 import { useState } from "react";
-import axios from 'axios'
+import { authAPI } from '../services/api';
 import { useNavigate } from "react-router-dom";
 
 
 export default function LogIn() {
   const [mobile,setMobile] = useState()
   const [password,setPassword] = useState()
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3001/login", { mobile, password })
-      .then((result) => {
-        console.log(result);
-        if (result.data.token) { 
-          localStorage.setItem("authToken", result.data.token);
-          navigate("/home");  
-          window.location.reload(); 
-        }
-      })
-      .catch((err) => console.log(err));
+    setError('')
+    
+    try {
+      const result = await authAPI.login({ mobile, password })
+      console.log(result.data);
+      
+      if (result.data.token) { 
+        localStorage.setItem("authToken", result.data.token);
+        localStorage.setItem("user", JSON.stringify(result.data.user));
+        alert('Login successful!')
+        navigate("/");  
+        window.location.reload(); 
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err.response?.data?.message || 'Login failed')
+    }
   };
 
   return (
     <div className="auth-container" id="SignUp">
       <UniversalNavbar />
       <h2 className="auth-title">LogIn</h2>
+      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
       <form className="auth" onSubmit={handleSubmit}>
         <p className="authsubtitle">Mobile</p>

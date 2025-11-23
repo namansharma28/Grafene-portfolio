@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import "./navbar.css"
 import SignUp from "../../page/signup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user is logged in
+    const token = localStorage.getItem('authToken');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    navigate('/');
+    window.location.reload();
+  };
 
   return (
     <nav className="navbar">
@@ -24,8 +40,6 @@ export const Navbar: React.FC = () => {
           </button>
 
           <div className={`navbar-links ${isOpen ? 'show' : ''}`}>
-            
-            {/* <Link to="#hero" className="navbar-link">Home</Link> */}
             <a href="#hero" className="navbar-link">
               Home
             </a>
@@ -39,13 +53,19 @@ export const Navbar: React.FC = () => {
               Contact
             </a>
             <Link to="/faq" className="navbar-link">FAQs</Link>
-            <Link to="/signup" className="navbar-link">SignUp</Link>
-            <Link to="/logIn" className="navbar-link">LogIn</Link>
-
             
+            {isLoggedIn ? (
+              <>
+                <Link to="/uploadproject" className="navbar-link">Upload Project</Link>
+                <button onClick={handleLogout} className="navbar-link logout-btn">Logout</button>
+              </>
+            ) : (
+              <>
+                <Link to="/signup" className="navbar-link">SignUp</Link>
+                <Link to="/logIn" className="navbar-link">LogIn</Link>
+              </>
+            )}
           </div>
-
-        
         </div>
       </div>
     </nav>

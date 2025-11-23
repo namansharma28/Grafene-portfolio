@@ -3,7 +3,7 @@ import "./index.css";
 import { UniversalNavbar } from "../assets/components/universal-navbar";
 import styled from "styled-components";
 import { useState } from "react";
-import axios from 'axios'
+import { authAPI } from '../services/api';
 import { useNavigate } from "react-router-dom";
 
 
@@ -13,15 +13,22 @@ export default function SignUp() {
   const [name,setName] = useState()
   const [mobile,setMobile] = useState()
   const [password,setPassword] = useState()
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3001/signup', {name, mobile, password})
-    .then(result => {console.log(result)
+    setError('')
+    
+    try {
+      const result = await authAPI.signup({ name, mobile, password })
+      console.log(result.data)
+      alert('Signup successful! Please login.')
       navigate('/LogIn')
-    })
-    .catch(err=> console.log(err))
+    } catch (err) {
+      console.error(err)
+      setError(err.response?.data?.message || 'Signup failed')
+    }
   }
 
   return (
@@ -29,6 +36,7 @@ export default function SignUp() {
       
       <UniversalNavbar />
       <h2 className="auth-title">SignUp</h2>
+      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
       <form className="auth" onSubmit={handleSubmit}>
         <p className="authsubtitle">Name</p>
