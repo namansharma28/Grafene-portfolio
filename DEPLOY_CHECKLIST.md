@@ -30,7 +30,7 @@
 - [ ] Create new Web Service
 - [ ] Set Root Directory: `backend`
 - [ ] Set Build Command: `npm install`
-- [ ] Set Start Command: `npm start`
+- [ ] Set Start Command: `node server.js`
 - [ ] Add environment variables:
   - [ ] `MONGODB_URI`
   - [ ] `JWT_SECRET`

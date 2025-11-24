@@ -22,7 +22,7 @@ Your backend is already configured for Render with `render.yaml`.
    - **Root Directory:** `backend`
    - **Environment:** `Node`
    - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
+   - **Start Command:** `node server.js`
    - **Instance Type:** Free
 
 5. **Add Environment Variables:**

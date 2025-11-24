@@ -10,7 +10,7 @@
 4. Settings:
    - **Root Directory:** `backend`
    - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
+   - **Start Command:** `node server.js`
 5. Add Environment Variables:
    ```
    MONGODB_URI=mongodb+srv://naman:namanpassword@cluster0.6ncweyj.mongodb.net/grafene?retryWrites=true&w=majority
