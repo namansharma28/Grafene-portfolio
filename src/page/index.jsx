@@ -82,19 +82,19 @@ export default function Portfolio() {
   const faqData = [
     {
       question: "--> What is Grafene?",
-      answer: "Grafene is a student-driven community for open-source collaboration.",
+      answer: "Grafene is SOIT's premier student-driven community for open-source collaboration. We connect students from various SOIT clubs to work on real-world tech projects.",
     },
     {
       question: "--> How can I contribute?",
-      answer: "You can contribute by joining our projects and sharing your skills.",
+      answer: "You can contribute by joining our projects and sharing your skills. All SOIT students and club members are welcome to participate.",
     },
     {
       question: "--> Is there a membership fee?",
-      answer: "No, Grafene is completely free to join.",
+      answer: "No, Grafene is completely free to join for all SOIT students.",
     },
     {
       question: "--> Where can I find more information?",
-      answer: "You can find more information on our website and GitHub page.",
+      answer: "You can find more information on our website grafene.in, Instagram @grafenesoit, or email us at grafenesoit@gmail.com",
     },
   ];
 
@@ -134,9 +134,9 @@ export default function Portfolio() {
             </p>
           </h2>
           <p className="description fade-in">
-            Grafene is a student-driven community for open-source collaboration.
-            We bring together students with diverse tech skills to learn, build,
-            and contribute to real-world projects.
+            Grafene is SOIT's premier student-driven community for open-source collaboration.
+            We bring together students from SOIT clubs with diverse tech skills to learn, build,
+            and contribute to real-world projects. Join the leading tech community at SOIT.
           </p>
           <button className="cta-button fade-in">
             <span>Projects </span>
@@ -151,9 +151,9 @@ export default function Portfolio() {
           <h2 className="about-title">About Grafene</h2>
           <div className="about-content">
             <div className="about-text">
-              <p>Grafene is inspired by the molecular structure of Graphene - where carbon atoms form a strong, flexible network. Similarly, we connect students with diverse skills to create powerful tech solutions.</p>
-              <p>Our mission is to provide a collaborative platform where students can gain real-world experience, build impressive portfolios, and contribute to meaningful open-source projects.</p>
-              <p>Whether you're a developer, designer, writer, or project manager, there's a place for you in our community.</p>
+              <p>Grafene is inspired by the molecular structure of Graphene - where carbon atoms form a strong, flexible network. Similarly, we connect SOIT students with diverse skills to create powerful tech solutions.</p>
+              <p>As SOIT's leading open-source community, our mission is to provide a collaborative platform where students from various SOIT clubs can gain real-world experience, build impressive portfolios, and contribute to meaningful open-source projects.</p>
+              <p>Whether you're a developer, designer, writer, or project manager from any SOIT club, there's a place for you in the Grafene community.</p>
             </div>
             {/* <div className="about-stats">
               <div className="stat-item">
