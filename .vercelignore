@@ -1,0 +1,9 @@
+node_modules
+backend/node_modules
+.git
+.env
+backend/.env
+*.log
+.DS_Store
+*.bat
+backend/render.yaml
