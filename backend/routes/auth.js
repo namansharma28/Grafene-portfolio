@@ -39,17 +39,25 @@ router.post('/login', async (req, res) => {
   try {
     const { mobile, password } = req.body;
 
+    console.log('Login attempt for mobile:', mobile);
+
     // Find user
     const user = await User.findOne({ mobile });
     if (!user) {
+      console.log('User not found for mobile:', mobile);
       return res.status(401).json({ message: 'Invalid credentials' });
     }
+
+    console.log('User found:', user.name);
 
     // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
+      console.log('Password mismatch for user:', mobile);
       return res.status(401).json({ message: 'Invalid credentials' });
     }
+
+    console.log('Login successful for:', mobile);
 
     // Generate token
     const token = jwt.sign(
@@ -87,6 +95,20 @@ router.get('/me', authenticate, async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: 'Error fetching user data' });
+  }
+});
+
+// Debug route - check database status
+router.get('/debug/users', async (req, res) => {
+  try {
+    const userCount = await User.countDocuments();
+    const users = await User.find({}, 'name mobile role').limit(5);
+    res.json({
+      totalUsers: userCount,
+      sampleUsers: users.map(u => ({ name: u.name, mobile: u.mobile, role: u.role }))
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching users', error: error.message });
   }
 });
 

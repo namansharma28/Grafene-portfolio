@@ -40,7 +40,24 @@ Click **Deploy**!
 
 Your app will be at: `https://your-project-name.vercel.app`
 
-Test the API: `https://your-project-name.vercel.app/api/health`
+### Important: Seed the Database
+
+Your database needs initial data. Run this locally (it will seed your production MongoDB):
+
+```bash
+cd backend
+node scripts/seedData.js
+```
+
+This creates:
+- Admin user with mobile: `1234567890` and password: `admin123`
+- Sample projects
+
+### Test the Deployment
+
+1. Check API health: `https://your-project-name.vercel.app/api/health`
+2. Check database: `https://your-project-name.vercel.app/api/auth/debug/users`
+3. Try login with: mobile `1234567890`, password `admin123`
 
 ## Local Development (Unchanged)
 
