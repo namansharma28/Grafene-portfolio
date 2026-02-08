@@ -138,12 +138,15 @@ const UploadProject = () => {
         <input
           type="text"
           name="image"
-          placeholder="Image URL (e.g., /projects/image.gif)"
+          placeholder="Image URL (e.g., /projects/image.gif or Google Drive link)"
           value={formData.image}
           onChange={handleChange}
           required
           style={{ width: '100%', padding: '10px', margin: '10px 0', background: 'transparent', border: '2px solid white', color: 'white', borderRadius: '15px' }}
         />
+        <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', margin: '-5px 0 10px 0' }}>
+          💡 Supports: Direct URLs, Google Drive links, Dropbox links
+        </p>
         <input
           type="text"
           name="features"
@@ -227,6 +230,9 @@ const UploadProject = () => {
               required
               style={{ width: '100%', padding: '10px', margin: '5px 0', background: 'transparent', border: '2px solid white', color: 'white', borderRadius: '15px' }}
             />
+            <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', margin: '5px 0' }}>
+              💡 Tip: Use Google Drive - Share image → Copy link → Paste here
+            </p>
             <input
               type="text"
               placeholder="Role"

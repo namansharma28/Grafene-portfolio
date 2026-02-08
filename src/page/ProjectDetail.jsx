@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Navbar } from "../assets/components/Navbar";
 import { projectsAPI } from '../services/api';
+import SmartImage from '../components/SmartImage';
 import "./ProjectDetail.css";
 
 export default function ProjectDetail() {
@@ -12,11 +13,14 @@ export default function ProjectDetail() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
+        console.log('Fetching project with ID:', projectId);
         const response = await projectsAPI.getById(projectId);
+        console.log('Project data received:', response.data);
         setProject(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching project:', error);
+        console.error('Error details:', error.response?.data);
         setProject(null);
         setLoading(false);
       }
@@ -56,7 +60,12 @@ export default function ProjectDetail() {
       
       <div className="project-header">
         <div className="project-image-container fade-in">
-          <img src={project.image} alt={project.title} className="project-image" />
+          <SmartImage 
+            src={project.image} 
+            alt={project.title} 
+            fallbackName={project.title}
+            className="project-image" 
+          />
         </div>
         <div className="project-title-container">
           <h1 className="project-title slide-in-right">{project.title}</h1>
@@ -102,7 +111,12 @@ export default function ProjectDetail() {
           <div className="contributors-container">
             {project.contributors.map((contributor, index) => (
               <div key={index} className="contributor-card">
-                <img src={contributor.image} alt={contributor.name} className="contributor-image" />
+                <SmartImage 
+                  src={contributor.image} 
+                  alt={contributor.name} 
+                  fallbackName={contributor.name}
+                  className="contributor-image" 
+                />
                 <h3 className="contributor-name">{contributor.name}</h3>
                 <p className="contributor-role">{contributor.role}</p>
               </div>

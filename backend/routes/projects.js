@@ -34,6 +34,14 @@ router.get('/:id', async (req, res) => {
 // Create new project (authenticated users only)
 router.post('/', authenticate, async (req, res) => {
   try {
+    // Check if project with this ID already exists
+    const existingProject = await Project.findOne({ id: req.body.id });
+    if (existingProject) {
+      return res.status(400).json({ 
+        message: 'A project with this ID already exists. Please use a different ID.' 
+      });
+    }
+
     const projectData = {
       ...req.body,
       createdBy: req.userId
@@ -48,6 +56,14 @@ router.post('/', authenticate, async (req, res) => {
     });
   } catch (error) {
     console.error('Error creating project:', error);
+    
+    // Handle duplicate key error specifically
+    if (error.code === 11000) {
+      return res.status(400).json({ 
+        message: 'A project with this ID already exists. Please use a different ID.' 
+      });
+    }
+    
     res.status(500).json({ message: 'Error creating project', error: error.message });
   }
 });
