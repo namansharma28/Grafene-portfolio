@@ -1,6 +1,7 @@
 // ProjectCard.tsx
 import React from "react";
 import { Link } from "react-router-dom";
+import SmartImage from "../../components/SmartImage";
 
 interface ProjectCardProps {
   image: string;
@@ -22,16 +23,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div className=" project-card">
-      <img src={image} alt={title} className="project-image" />
+      <SmartImage 
+        src={image} 
+        alt={title} 
+        fallbackName={title}
+        className="project-image" 
+      />
       <div className="project-content">
         <h3 className="project-title">{title}</h3>
         <p >{description}</p>
         <div className="flex items-center gap-2 my-2">
           {contributors.map((contributor, index) => (
-            <img
+            <SmartImage
               key={index}
               src={contributor}
-              alt="Contributor"
+              alt={`Contributor ${index + 1}`}
+              fallbackName={`User ${index + 1}`}
               className="cont-image w-8 h-8 rounded-full border border-gray-600"
             />
           ))}
